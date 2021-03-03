@@ -1,16 +1,16 @@
 {
-  "name": "ZingVibesWeb",
+  "name": "zingvibesweb",
   "version": "1.0.0",
-  "description": "",
+  "description": "Zing Vibes Store",
   "main": "server.js",
   "scripts": {
-    "test": "node backend/server.js",
+    "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Yazan Kherfan",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
