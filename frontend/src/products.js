@@ -1,4 +1,4 @@
-const products = [
+const product = [
   {
     _id: '1',
     name: 'Black Yoga Mat',
@@ -7,10 +7,10 @@ const products = [
       'Exercise mat for yoga, pilates, and other workout routines' +
       'Textured surface for enhanced traction'+
      ' 1/2-inch, extra-thick yoga mat for comfortable, cushioning support' +
-      ' Made of lightweight, durable foam  '+
+      ' Made of lightweight, durable foam  ' +
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
 
-    brand: 'Zing Vibes',
+    brand: 'Yoga',
     category: 'Health and Well being',
     price: 14.99,
     countInStock: 20,
@@ -27,7 +27,8 @@ const products = [
      ' 1/2-inch, extra-thick yoga mat for comfortable, cushioning support' +
       ' Made of lightweight, durable foam  '+
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
-    brand: 'Zing Vibes',
+
+    brand: 'Yoga',
     category: 'Health and Well being',
     price: 14.99,
     countInStock: 20,
@@ -45,7 +46,7 @@ const products = [
     ' Made of lightweight, durable foam  '+
     'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
       
-    brand: 'Zing Vibes',
+    brand: 'Yoga',
     category: 'Health and Well being',
     price: 14.99,
     countInStock: 20,
@@ -68,7 +69,7 @@ const products = [
     countInStock: 20,
     rating: 5,
     numReviews: 12,
-  },,
+  },
   {
     _id: '5',
     name: 'Purple Yoga Mat',
@@ -79,13 +80,13 @@ const products = [
    ' 1/2-inch, extra-thick yoga mat for comfortable, cushioning support' +
     ' Made of lightweight, durable foam  '+
     'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
-    brand: 'Zing Vibes',
+    brand: 'Yoga',
     category: 'Health and Well being',
     price: 14.99,
-    countInStock: 20,
+    countInStock: 50,
     rating: 4,
     numReviews: 12,
   },
 ]
 
-export default products
+export default product
