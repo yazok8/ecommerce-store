@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Black Yoga Mat',
     image: '/ZingImages/blackmat.jpeg',
     description:
@@ -18,7 +17,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Blue Yoga Mat',
     image: '/ZingImages/bluemat.jpeg',
     description:
@@ -36,7 +34,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Grey Yoga Mat',
     image: '/ZingImages/greymat.jpeg',
     description:
@@ -54,7 +51,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Pink Yoga Mat',
     image: '/ZingImages/pinkmat.jpeg',
     description:
@@ -71,7 +67,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Purple Yoga Mat',
     image: '/ZingImages/purplemat2.jpeg',
     description:
