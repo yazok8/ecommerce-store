@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import users from './data/users.js'
 import products from './data/products.js'
+import sections from './data/sections.js'
+import Sections from './models/sectionModel.js'
 import Product from './models/productModel.js'
 import Order from './models/orderModel.js'
 import User from './models/userModel.js'
@@ -14,7 +16,7 @@ connectDB()
 
 const importData = async () => {
   try {
-    // step 1: clear all three collections completely
+    await Sections.deleteMany()
     await Order.deleteMany()
     await Product.deleteMany()
     await User.deleteMany()
@@ -29,18 +31,24 @@ const importData = async () => {
 
     await Product.insertMany(sampleProducts)
 
+    const sampleSection = sections.map((section) => {
+      return { ...section, user: adminUser }
+    })
+
+    await Sections.insertMany(sampleSection)
+
     console.log('Data imported!'.green.inverse)
 
     process.exit()
   } catch (err) {
-    console.log(`${error}`.red.inverse)
+    console.log(`${err}`.red.inverse)
     process.exit(1)
   }
 }
 
 const destroyData = async () => {
   try {
-    // step 1: clear all three collections completely
+    await Sections.deleteMany()
     await Order.deleteMany()
     await Product.deleteMany()
     await User.deleteMany()
@@ -49,7 +57,7 @@ const destroyData = async () => {
 
     process.exit()
   } catch (err) {
-    console.log(`${error}`.red.inverse)
+    console.log(`${err}`.red.inverse)
     process.exit(1)
   }
 }
