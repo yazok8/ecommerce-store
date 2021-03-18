@@ -10,7 +10,8 @@ const products = [
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
 
     brand: 'Zing Vibes',
-    category: 'Sports',
+    category: 'Sports and Recreation',
+    slug: 'Sports and Recreation',
     price: 14.99,
     countInStock: 20,
     rating: 4.5,
@@ -27,7 +28,8 @@ const products = [
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
 
     brand: 'Yoga',
-    category: 'Sports',
+    category: 'Sports and Recreation',
+    slug: 'Sports and Recreation',
     price: 14.99,
     countInStock: 20,
     rating: 4.0,
@@ -44,7 +46,8 @@ const products = [
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
 
     brand: 'Zing Vibes',
-    category: 'Sports',
+    category: 'Sports and Recreation',
+    slug: 'Sports and Recreation',
     price: 14.99,
     countInStock: 20,
     rating: 3,
@@ -60,7 +63,8 @@ const products = [
       ' Made of lightweight, durable foam  ' +
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
     brand: 'Zing Vibes',
-    category: 'Sports',
+    category: 'Sports and Recreation',
+    slug: 'Sports and Recreation',
     price: 14.99,
     countInStock: 20,
     rating: 5,
@@ -76,7 +80,8 @@ const products = [
       ' Made of lightweight, durable foam  ' +
       'Measures approximately 74 x 24 x 0.5 inches (LxWxH)',
     brand: 'Zing Vibes',
-    category: 'Sports',
+    category: 'Sports and Recreation',
+    slug: 'Sports and Recreation',
     price: 14.99,
     countInStock: 50,
     rating: 4,
@@ -95,7 +100,8 @@ const products = [
       'the clothing. Eliminates neck and back discomfort from sitting with rounded shoulders in front of the computer.',
 
     brand: 'Zing Vibes',
-    category: 'Health And Well Being',
+    category: 'Wellness',
+    slug: 'Wellness',
     price: 24.99,
     countInStock: 1200,
     rating: 4.5,
@@ -113,7 +119,8 @@ const products = [
       'the clothing. Eliminates neck and back discomfort from sitting with rounded shoulders in front of the computer.',
 
     brand: 'Zing Vibes',
-    category: 'Health and Well being',
+    category: 'Wellness',
+    slug: 'Wellness',
     price: 14.99,
     countInStock: 20,
     rating: 4.0,
@@ -129,7 +136,8 @@ const products = [
       'that pain is not often painful. Use this PAD to expel blood' +
       'circulation pain.',
     brand: 'Zing Vibes',
-    category: 'Health and Well being',
+    category: 'Wellness',
+    slug: 'Wellness',
     price: 35.99,
     countInStock: 1000,
     rating: 4.3,
@@ -148,7 +156,8 @@ const products = [
       'the clothing. Eliminates neck and back discomfort from sitting with rounded shoulders in front of the computer.',
 
     brand: 'Zing Vibes',
-    category: 'Health and Well being',
+    category: 'Wellness',
+    slug: 'Wellness',
     price: 27.99,
     countInStock: 999,
     rating: 4.7,
@@ -166,7 +175,8 @@ const products = [
       'padded neoprene corrector can be worn comfortably under or over' +
       'the clothing. Eliminates neck and back discomfort from sitting with rounded shoulders in front of the computer.',
     brand: 'Zing Vibes',
-    category: 'Health and Well being',
+    category: 'Wellness',
+    slug: 'Wellness',
     price: 34.99,
     countInStock: 30,
     rating: 4.0,

@@ -8,6 +8,8 @@ import shopRoutes from './routes/shopRoutes.js'
 
 import sectionRoutes from './routes/sectionRoutes.js'
 
+import categoryRoutes from './routes/categoryRoutes.js'
+
 dotenv.config()
 
 connectDB()
@@ -20,9 +22,13 @@ app.get('/', (req, res) => {
   res.send('API is running')
 })
 
+app.use(express.json())
+
 app.use('/api/shop', shopRoutes)
 
 app.use('/api/collection', sectionRoutes)
+
+app.use('/api/category', categoryRoutes)
 
 //Error NotFound
 app.use((req, res, next) => {

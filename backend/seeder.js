@@ -3,8 +3,8 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import users from './data/users.js'
 import products from './data/products.js'
-import sections from './data/sections.js'
-import Sections from './models/sectionModel.js'
+// import sections from './data/sections.js'
+import Section from './models/sectionModel.js'
 import Product from './models/productModel.js'
 import Order from './models/orderModel.js'
 import User from './models/userModel.js'
@@ -16,7 +16,7 @@ connectDB()
 
 const importData = async () => {
   try {
-    await Sections.deleteMany()
+    // await Section.deleteMany()
     await Order.deleteMany()
     await Product.deleteMany()
     await User.deleteMany()
@@ -31,11 +31,11 @@ const importData = async () => {
 
     await Product.insertMany(sampleProducts)
 
-    const sampleSection = sections.map((section) => {
-      return { ...section, user: adminUser }
-    })
+    // const sampleSection = sections.map((section) => {
+    //   return { ...section, user: adminUser }
+    // })
 
-    await Sections.insertMany(sampleSection)
+    // await Section.insertMany(sampleSection)
 
     console.log('Data imported!'.green.inverse)
 
@@ -48,7 +48,7 @@ const importData = async () => {
 
 const destroyData = async () => {
   try {
-    await Sections.deleteMany()
+    // await Section.deleteMany()
     await Order.deleteMany()
     await Product.deleteMany()
     await User.deleteMany()

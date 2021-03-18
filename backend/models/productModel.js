@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 const reviewSchema = mongoose.Schema(
   {
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
@@ -45,10 +46,9 @@ const productSchema = new mongoose.Schema({
     default: null,
   },
 
-  category: {
-    type: String,
-    required: true,
-  },
+  category: { type: mongoose.Schema.Types.Object, ref: 'Category' },
+
+  slug: { type: String, sparse: true, required: true },
 
   price: {
     type: Number,
@@ -78,6 +78,16 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: 0,
+  },
+
+  offer: {
+    type: Number,
+  },
+
+  updated: Date,
+  created: {
+    type: Date,
+    default: Date.now,
   },
 })
 

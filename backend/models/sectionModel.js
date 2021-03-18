@@ -1,49 +1,6 @@
 import mongoose from 'mongoose'
 const { Schema } = mongoose
 
-// const productSchema = new mongoose.Schema({
-//   type: mongoose.Schema.Types.ObjectId,
-//   name: { type: String, required: true },
-//   image: {
-//     type: String,
-//     required: true,
-//   },
-//   imageKey: {
-//     type: String,
-//   },
-
-//   description: {
-//     type: String,
-//     trim: true,
-//     required: true,
-//   },
-//   category: {
-//     type: String,
-//     required: true,
-//   },
-
-//   price: {
-//     type: Number,
-//     required: true,
-//     default: 0,
-//   },
-//   taxable: {
-//     type: Boolean,
-//     default: false,
-//   },
-
-//   countInStock: {
-//     type: Number,
-//     required: true,
-//     default: 0,
-//   },
-//   rating: {
-//     type: Number,
-//     required: true,
-//     default: 0,
-//   },
-// })
-
 const sectionSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -94,6 +51,6 @@ const sectionSchema = new mongoose.Schema({
   },
 })
 
-const Sections = mongoose.model('Section', sectionSchema)
+const Section = mongoose.model('Section', sectionSchema)
 
-export default Sections
+export default Section
