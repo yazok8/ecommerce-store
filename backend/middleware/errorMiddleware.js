@@ -1,4 +1,4 @@
-const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode
   res.status(statusCode)
   res.json({
@@ -7,4 +7,9 @@ const errorHandler = (err, req, res, next) => {
   })
 }
 
-export default errorHandler
+export const userMiddleware = (req, res, next) => {
+  if (req.user.role !== 'user') {
+    return res.status(400).json({ message: 'User access denied' })
+  }
+  next()
+}

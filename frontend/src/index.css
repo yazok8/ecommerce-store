@@ -1,13 +1,16 @@
 main {
   min-height: 80vh;
 }
+body {
+  font-family: 'open-sans', sans-serif;
+}
 
-h1{
+h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
 }
 
-h2{
+h2 {
   font-size: 1.4rem;
   padding: 0.5rem;
 }

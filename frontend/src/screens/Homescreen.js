@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Directory from '../directory/directory'
 
 import './Homescreen.styles.scss'

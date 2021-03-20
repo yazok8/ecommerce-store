@@ -7,7 +7,7 @@ const Header = (props) => {
     <header>
       <Navbar bg="light" expand="lg" collapseOnSelect>
         <Container>
-          <LinkContainer to="/">
+          <LinkContainer to="/" className="nav-link">
             <Navbar.Brand>
               <img
                 className="img-responsive"
@@ -17,20 +17,26 @@ const Header = (props) => {
               ></img>
             </Navbar.Brand>
           </LinkContainer>
+          <h3>Admin Dashboard</h3>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ float: 'right' }}>
-              <LinkContainer to="/shop">
+              <LinkContainer to="/shop" className="nav-link">
                 <Nav.Link>
                   <i className="fas fa-shopping-bag"></i> Shop
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/login">
+              <LinkContainer to="/signin" className="nav-link">
                 <Nav.Link>
-                  <i className="fas fa-user"></i>Sign In
+                  <i className="fas fa-user"></i> Sign In
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/cart">
+              <LinkContainer to="/signup" className="nav-link">
+                <Nav.Link>
+                  <i className="fas fa-user-plus"></i> Sign Up
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/cart" className="nav-link">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i>Cart
                 </Nav.Link>

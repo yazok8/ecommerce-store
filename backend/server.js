@@ -2,7 +2,11 @@ import dotenv from 'dotenv'
 import express from 'express'
 import colors from 'colors'
 import connectDB from './config/db.js'
-import errorHandler from './middleware/errorMiddleware.js'
+import { errorHandler } from './middleware/errorMiddleware.js'
+
+import adminRoutes from './routes/admin/auth.js'
+
+import authRoutes from './routes/authRoutes.js'
 
 import shopRoutes from './routes/shopRoutes.js'
 
@@ -23,6 +27,10 @@ app.get('/', (req, res) => {
 })
 
 app.use(express.json())
+
+app.use('/api/users', authRoutes)
+
+app.use('/api', adminRoutes)
 
 app.use('/api/shop', shopRoutes)
 
