@@ -39,7 +39,7 @@ const signinUser = asyncHandler(async (req, res) => {
       if (user.authenticate(req.body.password) && user.role === 'admin') {
         const token = jwt.sign(
           { _id: user._id, role: user.role },
-          process.env.JWT_SECRET,
+          `${process.env.JWT_SECRET}`,
           {
             expiresIn: '30d',
           }

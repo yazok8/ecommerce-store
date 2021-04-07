@@ -12,13 +12,14 @@ export const addCartItems = asyncHandler(async (req, res, next) => {
 
       const product = req.body.cartItems.product
       const item = cart.cartItems.find((c) => c.product == product)
+      let condition, action
 
       if (item) {
         Cart.findOneAndUpdate(
           { user: req.user._id, 'cartItems.product': product },
           {
             $set: {
-              cartItems: {
+              'cartItems.$': {
                 ...req.body.cartItems,
                 quantity: item.quantity + req.body.cartItems.quantity,
               },
