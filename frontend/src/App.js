@@ -4,12 +4,10 @@ import Signin from './components/container/signin/Signin.container'
 import Signup from './components/container/signup/Signup.container'
 import Home from './components/container/home/Home.container'
 import Layout from './components/layouts/header.layout'
-import Homescreen from './screens/Homescreen'
 import Shopscreen from './screens/Shopscreen'
 import { Container } from 'react-bootstrap'
 import './bootstrap.min.css'
 import ProductScreen from './screens/ProductScreen'
-import Collectionscreen from './screens/Collectionscreen'
 import Cartscreen from './screens/Cartscreen'
 const App = () => {
   return (
@@ -24,7 +22,6 @@ const App = () => {
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/shop" component={Shopscreen} />
             <Route path="/product/:id" component={ProductScreen} />
-            <Route path="/collection/list" component={Collectionscreen} />
             <Route path="/cart/:id?" component={Cartscreen} />
           </Switch>
         </Container>

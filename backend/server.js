@@ -10,9 +10,8 @@ import authRoutes from './routes/authRoutes.js'
 
 import shopRoutes from './routes/shopRoutes.js'
 
-import sectionRoutes from './routes/sectionRoutes.js'
-
 import categoryRoutes from './routes/categoryRoutes.js'
+import cartRoutes from './routes/cartRoutes.js'
 
 dotenv.config()
 
@@ -34,9 +33,9 @@ app.use('/api', adminRoutes)
 
 app.use('/api/shop', shopRoutes)
 
-app.use('/api/collection', sectionRoutes)
-
 app.use('/api/category', categoryRoutes)
+
+app.use('/api', cartRoutes)
 
 //Error NotFound
 app.use((req, res, next) => {

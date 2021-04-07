@@ -1,22 +1,22 @@
 import mongoose from 'mongoose'
 
-const reviewSchema = mongoose.Schema(
-  {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true },
-  },
-  {
-    timestamp: true,
-  }
-)
+// const reviewSchema = mongoose.Schema(
+//   {
+//     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+//     name: { type: String, required: true },
+//     rating: { type: Number, required: true },
+//     comment: { type: String, required: true },
+//   },
+//   {
+//     timestamp: true,
+//   }
+// )
 
 const productSchema = new mongoose.Schema({
-  user: {
+  createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'User',
+    required: true,
   },
   sku: {
     type: String,
@@ -26,15 +26,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  productPictures: [
-    {
-      image: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  productPictures: [{ img: { type: String } }],
 
   imageKey: {
     type: String,
@@ -51,7 +43,11 @@ const productSchema = new mongoose.Schema({
     default: null,
   },
 
-  category: { type: mongoose.Schema.Types.Object, ref: 'Category' },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true,
+  },
 
   slug: { type: String, sparse: true, required: true },
 
@@ -60,18 +56,23 @@ const productSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+
+  quantity: {
+    type: Number,
+    required: true,
+  },
+
   taxable: {
     type: Boolean,
     default: false,
   },
 
-  countInStock: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-
-  reviews: [reviewSchema],
+  reviews: [
+    {
+      userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+      review: String,
+    },
+  ],
 
   rating: {
     type: Number,
@@ -89,7 +90,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
   },
 
-  updated: Date,
+  updatedAt: Date,
   created: {
     type: Date,
     default: Date.now,
