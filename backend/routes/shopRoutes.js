@@ -10,11 +10,8 @@ import {
 } from '../middleware/signinMiddleware.js'
 
 import multer from 'multer'
-import { nanoid } from 'nanoid'
 import path from 'path'
 import { fileURLToPath } from 'url'
-
-const ID = { nanoid }
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

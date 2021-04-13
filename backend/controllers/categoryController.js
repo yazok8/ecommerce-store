@@ -3,9 +3,15 @@ import asyncHandler from 'express-async-handler'
 import Category from '../models/categoryModel.js'
 
 export const addCategory = asyncHandler(async (req, res) => {
+  let categoryPicture
   const categoryObj = {
     name: req.body.name,
     slug: slugify(req.body.name),
+    categoryPicture,
+  }
+
+  if (req.file) {
+    categoryObj.categoryPicture = '/public/' + req.file.filename
   }
 
   if (req.body.parentId) {

@@ -42,6 +42,7 @@ const signinUser = asyncHandler(async (req, res, next) => {
             expiresIn: '30d',
           }
         )
+        res.cookie('token', token, { expiresIn: '30d' })
         const { _id, name, email, role, fullName } = user
         res.status(200).json({
           token,

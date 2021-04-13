@@ -75,4 +75,10 @@ const requireSignin = (req, res, next) => {
   //jwt.decode()
 }
 
-export { requireSignin, signinUser, registerUser }
+const signoutUser = asyncHandler(async (req, res, next) => {
+  res.clearCookie('token')
+  res.status(200).json({
+    message: 'signout successfully.........!',
+  })
+})
+export { requireSignin, signinUser, registerUser, signoutUser }
