@@ -3,6 +3,7 @@ main {
 }
 body {
   font-family: 'open-sans', sans-serif;
+  margin: 0;
 }
 
 h1 {

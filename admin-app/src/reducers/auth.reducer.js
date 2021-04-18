@@ -42,7 +42,7 @@ export const authReducer = (state = initState, action) => {
       return { ...state, loading: true }
 
     case LOGOUT_REQUEST_SUCCESS:
-      return { ...initState }
+      return { ...initState, auth: action.payload }
 
     case LOGOUT_REQUEST_FAILURE:
       return { ...state, error: action.payload.error, loading: false }

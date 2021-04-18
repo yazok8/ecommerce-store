@@ -8,38 +8,33 @@ import {
   LOGOUT_REQUEST_FAILURE,
 } from './auth.types'
 
-export const login = (user) => async (dispatch) => {
-  dispatch({
-    type: LOGIN_REQUEST,
-  })
+export const login = (user) => {
+  console.log(user)
 
-  const config = {
-    Headers: {
-      'content-type': 'application/json',
-    },
-  }
-
-  const res = await axios.post('/admin/signin', {
-    ...user,
-    config,
-  })
-
-  if (res.status === 200) {
-    const { token, user } = res.data
-    localStorage.setItem('token', token)
-    localStorage.setItem('user', JSON.stringify(user))
-
-    dispatch({
-      type: LOGIN_REQUEST_SUCCESS,
-      payload: token,
-      user,
+  return async (dispatch) => {
+    dispatch({ type: LOGIN_REQUEST })
+    const res = await axios.post(`/admin/signin`, {
+      ...user,
     })
-  } else {
-    if (res === 400) {
+
+    if (res.status === 200) {
+      const { token, user } = res.data
+      localStorage.setItem('token', token)
+      localStorage.setItem('user', JSON.stringify(user))
       dispatch({
-        type: LOGIN_REQUEST_FAIL,
-        payload: { error: res.data.error },
+        type: LOGIN_REQUEST_SUCCESS,
+        payload: {
+          token,
+          user,
+        },
       })
+    } else {
+      if (res.status === 400) {
+        dispatch({
+          type: LOGIN_REQUEST_FAIL,
+          payload: { error: res.data.error },
+        })
+      }
     }
   }
 }

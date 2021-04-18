@@ -14,6 +14,8 @@ import Cartscreen from './screens/Cartscreen'
 import PrivateRoute from './components/HOC/PrivateRoute'
 import { useDispatch, useSelector } from 'react-redux'
 import { isUserLoggedIn } from './actions/actions'
+import axios from 'axios'
+import Category from './components/container/category/Category'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -31,6 +33,7 @@ const App = () => {
       <PrivateRoute path="/" exact component={Home} />
       <PrivateRoute path="/products" component={Products}></PrivateRoute>
       <PrivateRoute path="/orders" component={Orders}></PrivateRoute>
+      <PrivateRoute path="/category" component={Category}></PrivateRoute>
 
       <Route path="/signup" component={Signup} />
       <Route path="/product/:id" component={ProductScreen} />
