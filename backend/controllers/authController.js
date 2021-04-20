@@ -1,19 +1,21 @@
 import asyncHandler from 'express-async-handler'
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs'
 
 import User from '../models/userModel.js'
 
-const registerUser = asyncHandler(async (req, res) => {
-  User.findOne({ email: req.body.email }).exec((error, user) => {
+const registerUser = (req, res) => {
+  User.findOne({ email: req.body.email }).exec(async (error, user) => {
     if (user)
       return res.status(400).json({ message: 'user is already registered' })
 
     const { name, email, password } = req.body
+    const hash_password = await bcrypt.hash(password, 10)
     const _user = new User({
       name,
       username: Math.random().toString(),
       email,
-      password,
+      hash_password,
     })
     _user.save((error, data) => {
       if (error) {
@@ -27,7 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
         })
     })
   })
-})
+}
 
 const signinUser = asyncHandler(async (req, res, next) => {
   User.findOne({ email: req.body.email }).exec((error, user) => {

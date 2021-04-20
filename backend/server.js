@@ -8,6 +8,8 @@ import { errorHandler } from './middleware/errorMiddleware.js'
 
 import adminRoutes from './routes/admin/auth.js'
 
+import initialDataRoutes from './routes/admin/initData.js'
+
 import authRoutes from './routes/authRoutes.js'
 
 import shopRoutes from './routes/shopRoutes.js'
@@ -41,6 +43,7 @@ app.use('/public', express.static(path.join(__dirname, 'uploads')))
 app.use('/api/users', authRoutes)
 
 app.use('/api/admin', adminRoutes)
+app.use('/api', initialDataRoutes)
 
 app.use('/api/shop', shopRoutes)
 

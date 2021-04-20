@@ -13,8 +13,8 @@ import Orders from './components/container/orders/Orders'
 import Cartscreen from './screens/Cartscreen'
 import PrivateRoute from './components/HOC/PrivateRoute'
 import { useDispatch, useSelector } from 'react-redux'
-import { isUserLoggedIn } from './actions/actions'
-import axios from 'axios'
+import { isUserLoggedIn, getInitialData } from './actions/actions'
+
 import Category from './components/container/category/Category'
 
 const App = () => {
@@ -25,6 +25,7 @@ const App = () => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn())
     }
+    dispatch(getInitialData())
   }, [])
 
   return (
@@ -34,12 +35,7 @@ const App = () => {
       <PrivateRoute path="/products" component={Products}></PrivateRoute>
       <PrivateRoute path="/orders" component={Orders}></PrivateRoute>
       <PrivateRoute path="/category" component={Category}></PrivateRoute>
-
       <Route path="/signup" component={Signup} />
-      <Route path="/product/:id" component={ProductScreen} />
-      <Route path="/shop" component={Shopscreen} />
-      <Route path="/product/:id" component={ProductScreen} />
-      <Route path="/cart/:id?" component={Cartscreen} />
     </Switch>
   )
 }
