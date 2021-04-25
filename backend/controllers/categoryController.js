@@ -1,12 +1,13 @@
 import slugify from 'slugify'
 import asyncHandler from 'express-async-handler'
 import Category from '../models/categoryModel.js'
+import { nanoid } from 'nanoid'
 
 export const addCategory = asyncHandler(async (req, res) => {
   let categoryPicture
   const categoryObj = {
     name: req.body.name,
-    slug: slugify(req.body.name),
+    slug: `${slugify(req.body.name)}-${nanoid(4)}`,
     categoryPicture,
   }
 

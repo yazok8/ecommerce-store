@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import { nanoid } from 'nanoid'
 
 import User from '../models/userModel.js'
 
@@ -13,7 +14,7 @@ const registerUser = (req, res) => {
     const hash_password = await bcrypt.hash(password, 10)
     const _user = new User({
       name,
-      username: Math.random().toString(),
+      username: nanoid(6),
       email,
       hash_password,
     })
@@ -45,12 +46,12 @@ const signinUser = asyncHandler(async (req, res, next) => {
           }
         )
         res.cookie('token', token, { expiresIn: '30d' })
-        const { _id, name, email, role, fullName } = user
+        const { _id, username, email, role, fullName } = user
         res.status(200).json({
           token,
           user: {
             _id,
-            name,
+            username,
             email,
             role,
             fullName,

@@ -3,6 +3,7 @@ import {
   createProduct,
   getProductById,
   getProducts,
+  getProductsBySlug,
 } from '../controllers/productContoller.js'
 import {
   requireSignin,
@@ -57,9 +58,9 @@ const router = express.Router()
 // @route GET /api/shop...
 // @access Public
 
-router.route('/').get(getProducts)
+// router.route('/').get(getProducts)
 
-router.route('/:id').get(getProductById)
+// router.route('/:id').get(getProductById)
 
 router.post(
   '/create',
@@ -68,5 +69,7 @@ router.post(
   upload.array('productPicture'),
   createProduct
 )
+
+router.get('/:slug', getProductsBySlug)
 
 export default router

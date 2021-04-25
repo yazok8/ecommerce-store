@@ -1,4 +1,5 @@
 import Product from '../models/productModel.js'
+import Category from '../models/categoryModel.js'
 import asyncHandler from 'express-async-handler'
 import slugify from 'slugify'
 
@@ -57,4 +58,21 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 })
 
-export { getProducts, getProductById, createProduct }
+const getProductsBySlug = (req, res) => {
+  const { slug } = req.params
+
+  Category.findOne({ slug: slug })
+    .select('_id')
+    .exec((error, category) => {
+      if (error) {
+        return res.status(400).json({ error })
+      }
+      if (category) {
+        Product.find({ category: category._id }).exec((error, products) => {
+          res.status(200).json({ products })
+        })
+      }
+    })
+}
+
+export { getProducts, getProductById, createProduct, getProductsBySlug }
