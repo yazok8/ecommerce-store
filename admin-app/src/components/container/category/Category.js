@@ -5,6 +5,8 @@ import { getAllCategory, addCategory } from '../../../actions/actions'
 import Input from '../../UI/input/Input.ui'
 import NewModal from '../../UI/modal/modal'
 import Layout from '../../layouts/header.layout'
+import CheckboxTree from 'react-checkbox-tree'
+import 'react-checkbox-tree/lib/react-checkbox-tree.css'
 
 const Category = (props) => {
   const [categoryName, setCategoryName] = useState('')
