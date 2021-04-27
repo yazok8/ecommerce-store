@@ -1,8 +1,6 @@
 import express from 'express'
 import {
   createProduct,
-  getProductById,
-  getProducts,
   getProductsBySlug,
 } from '../controllers/productContoller.js'
 import {
@@ -59,8 +57,6 @@ const router = express.Router()
 // @access Public
 
 // router.route('/').get(getProducts)
-
-// router.route('/:id').get(getProductById)
 
 router.post(
   '/create',

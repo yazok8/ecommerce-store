@@ -1,12 +1,10 @@
 import React from 'react'
-import Header from '../../components/header/Header'
-import MenuHeader from '../../components/menu-header/Menu-Header'
+import Layout from '../../components/layout/Layout'
 
 const Homepage = () => {
   return (
     <div>
-      <Header />
-      <MenuHeader />
+      <Layout />
     </div>
   )
 }

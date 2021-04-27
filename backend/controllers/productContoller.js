@@ -39,9 +39,14 @@ const createProduct = asyncHandler(async (req, res) => {
 // @access Public
 
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
+  const products = await Product.find({}).sort({ created: -1 }).limit(6)
   res.json(products)
 })
+2
+
+// Product.find({
+//         userId: data.id
+//     },null,{ sort :{ createdOn : -1}},function(err, products) {...});
 
 // @desc fetch a single product...
 // @route GET /api/shop/:id...
@@ -69,7 +74,24 @@ const getProductsBySlug = (req, res) => {
       }
       if (category) {
         Product.find({ category: category._id }).exec((error, products) => {
-          res.status(200).json({ products })
+          if (error) {
+            return res.status(400).json({ error })
+          }
+
+          if (products.length > 0) {
+            res.status(200).json({
+              products,
+              productsByPrice: {
+                under30: products.filter((product) => product.price <= 30),
+                under40: products.filter(
+                  (product) => product.price > 30 && product.price <= 40
+                ),
+                under50: products.filter(
+                  (product) => product.price > 40 && product.price <= 50
+                ),
+              },
+            })
+          }
         })
       }
     })
