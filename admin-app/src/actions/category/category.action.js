@@ -51,3 +51,31 @@ export const addCategory = (form) => {
     }
   }
 }
+
+export const updateCategories = (form) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(`/category/update`, form)
+      if (res.status === 201) {
+        return true
+        console.log(res)
+      } else {
+      }
+    } catch (error) {
+      console.log(error.response)
+    }
+  }
+}
+
+export const deleteCategories = (ids) => {
+  return async (dispatch) => {
+    const res = await axios.post(`/category/delete`, {
+      payload: { ids },
+    })
+    if (res.status === 201) {
+      return true
+    } else {
+      return false
+    }
+  }
+}

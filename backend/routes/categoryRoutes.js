@@ -5,6 +5,8 @@ import Category from '../models/categoryModel.js'
 import {
   addCategory,
   getCategories,
+  updateCategory,
+  deleteCategory,
 } from '../controllers/categoryController.js'
 import {
   adminMiddleware,
@@ -62,3 +64,7 @@ router.post(
 
 router.get('/getcategory', getCategories)
 export default router
+
+router.post('/update', upload.array('categoryPicture'), updateCategory)
+
+router.post('/delete', deleteCategory)
