@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NewModal from '../../../UI/modal/modal'
 import Input from '../../../UI/input/Input.ui'
 
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 
 const UpdateCategoriesModal = (props) => {
   const {

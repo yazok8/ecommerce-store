@@ -2,7 +2,13 @@ import {
   ADD_NEW_CATEGORY_FAIL,
   ADD_NEW_CATEGORY_REQUEST,
   ADD_NEW_CATEGORY_SUCCESS,
+  DELETE_CATEGORY_FAILURE,
+  DELETE_CATEGORY_REQUEST,
+  DELETE_CATEGORY_SUCCESS,
   GET_ALL_CATEGORIES_SUCCESS,
+  UPDATE_CATEGORY_FAILURE,
+  UPDATE_CATEGORY_REQUEST,
+  UPDATE_CATEGORY_SUCCESS,
 } from '../actions/category/catergory.types'
 
 const initState = {
@@ -88,6 +94,41 @@ export const categoryReducer = (state = initState, action) => {
         error: action.payload.error,
       }
 
+    case UPDATE_CATEGORY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      }
+    case UPDATE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      }
+
+    case UPDATE_CATEGORY_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+        loading: false,
+      }
+
+    case DELETE_CATEGORY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      }
+    case DELETE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      }
+
+    case DELETE_CATEGORY_FAILURE:
+      return {
+        ...state,
+        error: action.payload.error,
+        loading: false,
+      }
     default:
       return state
   }

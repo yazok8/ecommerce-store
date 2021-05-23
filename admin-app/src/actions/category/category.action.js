@@ -3,17 +3,22 @@ import {
   ADD_NEW_CATEGORY_FAIL,
   ADD_NEW_CATEGORY_REQUEST,
   ADD_NEW_CATEGORY_SUCCESS,
+  DELETE_CATEGORY_REQUEST,
+  DELETE_CATEGORY_SUCCESS,
   GET_ALL_CATEGORIES_FAIL,
   GET_ALL_CATEGORIES_REQUEST,
   GET_ALL_CATEGORIES_SUCCESS,
+  UPDATE_CATEGORY_FAILURE,
+  UPDATE_CATEGORY_REQUEST,
+  UPDATE_CATEGORY_SUCCESS,
 } from './catergory.types'
 
-export const getAllCategory = () => {
+const getAllCategory = () => {
   return async (dispatch) => {
     dispatch({ type: GET_ALL_CATEGORIES_REQUEST })
     const res = await axios.get(`category/getcategory`)
     console.log(res)
-    if (res.status === 200) {
+    if (res.status === 20) {
       const { categoryList } = res.data
 
       dispatch({
@@ -54,12 +59,18 @@ export const addCategory = (form) => {
 
 export const updateCategories = (form) => {
   return async (dispatch) => {
+    dispatch({ type: UPDATE_CATEGORY_REQUEST })
+
     try {
       const res = await axios.post(`/category/update`, form)
       if (res.status === 201) {
-        return true
-        console.log(res)
+        dispatch({ type: UPDATE_CATEGORY_SUCCESS })
+        dispatch(getAllCategory())
       } else {
+        dispatch({
+          type: UPDATE_CATEGORY_FAILURE,
+          payload: { error: res.data.error },
+        })
       }
     } catch (error) {
       console.log(error.response)
@@ -69,13 +80,24 @@ export const updateCategories = (form) => {
 
 export const deleteCategories = (ids) => {
   return async (dispatch) => {
-    const res = await axios.post(`/category/delete`, {
-      payload: { ids },
-    })
-    if (res.status === 201) {
-      return true
-    } else {
-      return false
+    dispatch({ type: DELETE_CATEGORY_REQUEST })
+    try {
+      const res = await axios.post(`/category/delete`, {
+        payload: { ids },
+      })
+      if (res.status === 201) {
+        dispatch(getAllCategory())
+        dispatch({ type: DELETE_CATEGORY_SUCCESS })
+      } else {
+        dispatch({
+          type: UPDATE_CATEGORY_FAILURE,
+          payload: { error: res.data.error },
+        })
+      }
+    } catch (error) {
+      console.log(error.response)
     }
   }
 }
+
+export { getAllCategory }
