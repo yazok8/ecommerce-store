@@ -16,6 +16,8 @@ const UpdateCategoriesModal = (props) => {
     show,
   } = props
 
+  console.log({ expandedArray, checkedArray })
+
   return (
     <NewModal
       show={show}
@@ -46,7 +48,12 @@ const UpdateCategoriesModal = (props) => {
                 className="form-control"
                 value={item.parentId}
                 onChange={(e) =>
-                  handleCategoryInput('name', e.target.value, index, 'expanded')
+                  handleCategoryInput(
+                    'parentId',
+                    e.target.value,
+                    index,
+                    'expanded'
+                  )
                 }
               >
                 <option>select category</option>
@@ -58,8 +65,14 @@ const UpdateCategoriesModal = (props) => {
               </select>
             </Col>
             <Col>
-              <select className="form-control">
-                <option value="">Select type</option>
+              <select
+                className="form-control"
+                value={item.type}
+                onChange={(e) =>
+                  handleCategoryInput('type', e.target.value, index, 'expanded')
+                }
+              >
+                <option>Select type</option>
                 <option value="store">Store</option>
                 <option value="product">Product</option>
                 <option value="page">Page</option>
@@ -103,8 +116,14 @@ const UpdateCategoriesModal = (props) => {
               </select>
             </Col>
             <Col>
-              <select className="form-control">
-                <option value="">Select type</option>
+              <select
+                className="form-control"
+                value={item.type}
+                onChange={(e) =>
+                  handleCategoryInput('type', e.target.value, index, 'checked')
+                }
+              >
+                <option>Select type</option>
                 <option value="store">Store</option>
                 <option value="product">Product</option>
                 <option value="page">Page</option>

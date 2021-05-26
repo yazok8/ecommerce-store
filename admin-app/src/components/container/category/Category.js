@@ -129,14 +129,14 @@ const Category = (props) => {
   }
 
   const handleCategoryInput = (key, value, index, type) => {
-    if (type == 'checked') {
+    if (type === 'checked') {
       const updatedCheckedArray = checkedArray.map((item, _index) =>
-        index == _index ? { ...item, [key]: value } : item
+        index === _index ? { ...item, [key]: value } : item
       )
       setCheckedArray(updatedCheckedArray)
-    } else if (type == 'expanded') {
+    } else if (type === 'expanded') {
       const updatedExpandedArray = expandedArray.map((item, _index) =>
-        index == _index ? { ...item, [key]: value } : item
+        index === _index ? { ...item, [key]: value } : item
       )
       setExpandedArray(updatedExpandedArray)
     }

@@ -68,15 +68,16 @@ function Products() {
         <tbody>
           {product.products.length > 0
             ? product.products.map((product) => (
-                <tr
-                  onClick={() => showProductDetailsModal(product)}
-                  key={product._id}
-                >
+                <tr key={product._id}>
                   <td>2</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.quantity}</td>
                   <td>{product.category.name}</td>
+
+                  <button onClick={() => showProductDetailsModal(product)}>
+                    info
+                  </button>
                 </tr>
               ))
             : null}
