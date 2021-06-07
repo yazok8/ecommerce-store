@@ -73,7 +73,7 @@ function Products() {
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.quantity}</td>
-                  <td>{product.category.name}</td>
+                  {/* <td>{product.category.name}</td> */}
 
                   <button onClick={() => showProductDetailsModal(product)}>
                     info
@@ -209,7 +209,7 @@ function Products() {
           </Col>
           <Col md="6">
             <label className="key">Category:</label>
-            <p className="value">{productDetails.category.name}</p>
+            {/* <p className="value">{productDetails.category.name}</p> */}
           </Col>
         </Row>
         <Row>

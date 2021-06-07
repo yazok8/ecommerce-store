@@ -19,12 +19,15 @@ const App = () => {
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
 
+  //this is the same as componentDidMount but here we will use componnentDidUpdate
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn())
     }
-    dispatch(getInitialData())
-  }, [])
+    if (auth.authenticate) {
+      dispatch(getInitialData())
+    }
+  }, [auth.authenticate])
 
   return (
     <Switch>
