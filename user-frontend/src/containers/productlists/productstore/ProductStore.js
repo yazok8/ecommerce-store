@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getProductsBySlug } from '../../actions/actions'
-import Layout from '../../components/layout/Layout'
+import { getProductsBySlug } from '../../../actions/actions'
+import Layout from '../../../components/layout/Layout'
 import { useDispatch, useSelector } from 'react-redux'
-import { generatePublicUrl } from '../../urlConfig'
-import './ProductlistStyle.css'
+import { generatePublicUrl } from '../../../urlConfig'
 
-const Productlist = (props) => {
+const ProductStore = (props) => {
   const product = useSelector((state) => state.product)
   const [priceRange, setPriceRange] = useState({
     under30: 30,
@@ -18,9 +17,8 @@ const Productlist = (props) => {
     const { match } = props
     dispatch(getProductsBySlug(match.params.slug))
   }, [])
-
   return (
-    <Layout>
+    <>
       {Object.keys(product.productsByPrice).map((key, index) => {
         return (
           <div className="card">
@@ -56,8 +54,8 @@ const Productlist = (props) => {
           </div>
         )
       })}
-    </Layout>
+    </>
   )
 }
 
-export default Productlist
+export default ProductStore

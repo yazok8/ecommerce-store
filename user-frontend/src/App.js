@@ -1,14 +1,14 @@
 import './App.css'
 import Homepage from './containers/hompage/Homepage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Productlist from './containers/productlists/Productlist'
+import ProductListPage from './containers/productlists/ProductListPage'
 const App = () => {
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/" exact component={Homepage} />
-          <Route path="/:slug" component={Productlist} />
+          <Route path="/:slug" component={ProductListPage} />
         </Switch>
       </Router>
     </div>
