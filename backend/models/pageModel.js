@@ -12,7 +12,7 @@ const pageSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    banner: [
+    banners: [
       {
         img: {
           type: String,

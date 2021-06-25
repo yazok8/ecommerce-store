@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css'
 import Homepage from './containers/hompage/Homepage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'

@@ -18,7 +18,7 @@ export const createPage = (form) => {
       } else {
         dispatch({
           type: CREATE_PAGE_FAILURE,
-          payload: { error: res.data.error },
+          payload: res.data.error,
         })
       }
     } catch (error) {

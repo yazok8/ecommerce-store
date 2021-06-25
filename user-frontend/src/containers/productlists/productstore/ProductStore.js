@@ -18,7 +18,7 @@ const ProductStore = (props) => {
     dispatch(getProductsBySlug(match.params.slug))
   }, [])
   return (
-    <>
+    <div>
       {Object.keys(product.productsByPrice).map((key, index) => {
         return (
           <div className="card">
@@ -54,7 +54,7 @@ const ProductStore = (props) => {
           </div>
         )
       })}
-    </>
+    </div>
   )
 }
 

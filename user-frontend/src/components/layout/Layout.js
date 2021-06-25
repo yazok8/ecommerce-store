@@ -4,11 +4,11 @@ import MenuHeader from '../menu-header/Menu-Header'
 
 const Layout = (props) => {
   return (
-    <>
+    <div>
       <Header />
       <MenuHeader />
       {props.children}
-    </>
+    </div>
   )
 }
 

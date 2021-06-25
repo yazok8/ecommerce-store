@@ -16,7 +16,7 @@ import shopRoutes from './routes/shopRoutes.js'
 
 import categoryRoutes from './routes/categoryRoutes.js'
 import cartRoutes from './routes/cartRoutes.js'
-import pageRoutes from './routes/pageRoutes.js'
+import pageRoutes from './routes/admin/pageRoutes.js'
 
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -53,7 +53,7 @@ app.use('/api/category', categoryRoutes)
 
 app.use('/api', cartRoutes)
 
-app.use('/api', pageRoutes)
+app.use('/api/page', pageRoutes)
 
 //Error NotFound
 app.use((req, res, next) => {
