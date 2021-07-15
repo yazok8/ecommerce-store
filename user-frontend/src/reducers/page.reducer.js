@@ -20,7 +20,7 @@ export const pageReducer = (state = initialState, action) => {
     case GET_PRODUCT_PAGE_SUCCESS:
       return {
         ...state,
-        page: action.payload.products,
+        page: action.payload.page,
         pageReuqest: false,
       }
     case GET_PRODUCT_PAGE_FAILURE:

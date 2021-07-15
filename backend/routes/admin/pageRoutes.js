@@ -16,6 +16,6 @@ router.post(
   createPage
 )
 
-router.get('/page/:category/:type', getPage)
+router.get('/:category/:type', getPage)
 
 export default router

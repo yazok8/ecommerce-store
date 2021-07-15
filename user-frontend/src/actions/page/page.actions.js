@@ -10,17 +10,10 @@ export const getProductPage = (payload) => {
   return async (dispatch) => {
     try {
       const { cid, type } = payload.params
-      console.log({ payload })
-
       const res = await axios.get(`/page/${cid}/${type}`)
-      dispatch({
-        type: GET_PRODUCT_PAGE_REQUEST,
-      })
-
-      console.log(res)
+      dispatch({ type: GET_PRODUCT_PAGE_REQUEST })
       if (res.status === 200) {
         const { page } = res.data
-
         dispatch({
           type: GET_PRODUCT_PAGE_SUCCESS,
           payload: { page },
