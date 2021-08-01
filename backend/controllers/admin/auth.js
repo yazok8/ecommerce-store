@@ -45,7 +45,7 @@ const signinUser = asyncHandler(async (req, res) => {
             expiresIn: '30d',
           }
         )
-        const { _id, username, email, role, fullName } = user
+        const { _id, username, email, role, name } = user
         res.status(200).json({
           token,
           user: {
@@ -53,7 +53,7 @@ const signinUser = asyncHandler(async (req, res) => {
             username,
             email,
             role,
-            fullName,
+            name,
           },
         })
       } else {

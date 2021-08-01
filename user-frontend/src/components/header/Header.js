@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './HeaderStyle.css'
 import ZingVibesLogo from '../../images/logo2.png'
 import goldenStar from '../../images/golden-star.png'
@@ -9,6 +9,8 @@ import {
   MaterialButton,
   DropdownMenu,
 } from '../material-ui/MaterialUI'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../actions/auth/auth.actions'
 
 /**
  * @author
@@ -19,6 +21,72 @@ const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const auth = useSelector((state) => state.auth)
+
+  const dispatch = useDispatch()
+
+  const userLogin = () => {
+    dispatch(login({ email, password }))
+  }
+
+  useEffect(() => {
+    if (auth.authenticate) {
+    }
+  }, [auth.authenticate])
+
+  const renderLoggedInMenu = () => {
+    return (
+      <DropdownMenu
+        menu={<a className="fullName">{'Logout'}</a>}
+        menus={[
+          { label: 'My Profile', href: '', icon: null },
+          { label: 'SuperCoind Zone', href: '', icon: null },
+          { label: 'Zing Vibes Plus Zone', href: '', icon: null },
+          { label: 'Orders', href: '', icon: null },
+          { label: 'Wishlist', href: '', icon: null },
+          { label: 'My Chats', href: '', icon: null },
+          { label: 'Coupons', href: '', icon: null },
+          { label: 'Rewards', href: '', icon: null },
+          { label: 'Notifications', href: '', icon: null },
+          { label: 'Gift Cards', href: '', icon: null },
+          { label: 'Logout', href: '', icon: null },
+        ]}
+        firstMenu={
+          <div className="firstmenu">
+            <span>New Customer?</span>
+            <a style={{ color: '#2874f0' }}>Sign Up</a>
+          </div>
+        }
+      />
+    )
+  }
+
+  const renderNoneLoggedInMenu = () => {
+    return (
+      <DropdownMenu
+        menu={
+          <a className="loginButton" onClick={() => setLoginModal(true)}>
+            Login
+          </a>
+        }
+        menus={[
+          { label: 'My Profile', href: '', icon: null },
+          { label: 'Zing Vibes Plus Zone', href: '', icon: null },
+          { label: 'Orders', href: '', icon: null },
+          { label: 'Wishlist', href: '', icon: null },
+          { label: 'Rewards', href: '', icon: null },
+          { label: 'Gift Cards', href: '', icon: null },
+        ]}
+        firstMenu={
+          <div className="firstmenu">
+            <span>New Customer?</span>
+            <a style={{ color: '#2874f0' }}>Sign Up</a>
+          </div>
+        }
+      />
+    )
+  }
 
   return (
     <div className="header">
@@ -32,22 +100,34 @@ const Header = (props) => {
             <div className="rightspace">
               <MaterialInput
                 type="text"
-                label="Enter Email/Enter Mobile Number"
+                label="Enter your email or phone number"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
 
               <MaterialInput
                 type="password"
-                label="Enter Password"
+                label="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                rightElement={<a href="#">Forgot?</a>}
+                // rightElement={<a href="#">Forgot password?</a>}
               />
+
               <MaterialButton
                 title="Login"
                 bgColor="#fb641b"
                 textColor="#ffffff"
+                style={{ margin: '40px 0 20px 0' }}
+                onClick={userLogin}
+              />
+
+              <p>Or</p>
+
+              <MaterialButton
+                title="Request OTP"
+                bgColor="#ffffff"
+                textColor="#fb641b"
+                style={{ margin: '20px 0px' }}
               />
             </div>
           </div>
@@ -88,27 +168,7 @@ const Header = (props) => {
         {/* the right side menu */}
 
         <div className="rightMenu">
-          <DropdownMenu
-            menu={
-              <a className="loginButton" onClick={() => setLoginModal(true)}>
-                Login
-              </a>
-            }
-            menus={[
-              { label: 'My Profile', href: '', icon: null },
-              { label: 'Zing Vibes Plus Zone', href: '', icon: null },
-              { label: 'Orders', href: '', icon: null },
-              { label: 'Wishlist', href: '', icon: null },
-              { label: 'Rewards', href: '', icon: null },
-              { label: 'Gift Cards', href: '', icon: null },
-            ]}
-            firstMenu={
-              <div className="firstmenu">
-                <span>New Customer?</span>
-                <a style={{ color: '#2874f0' }}>Sign Up</a>
-              </div>
-            }
-          />
+          {auth.authenticate ? renderLoggedInMenu() : renderNoneLoggedInMenu()}
 
           <DropdownMenu
             menu={
