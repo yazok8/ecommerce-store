@@ -10,7 +10,7 @@ import {
   DropdownMenu,
 } from '../material-ui/MaterialUI'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../actions/auth/auth.actions'
+import { login, signout } from '../../actions/auth/auth.actions'
 
 /**
  * @author
@@ -30,15 +30,20 @@ const Header = (props) => {
     dispatch(login({ email, password }))
   }
 
+  const logout = () => {
+    dispatch(signout())
+  }
+
   useEffect(() => {
     if (auth.authenticate) {
+      setLoginModal(false)
     }
   }, [auth.authenticate])
 
   const renderLoggedInMenu = () => {
     return (
       <DropdownMenu
-        menu={<a className="fullName">{'Logout'}</a>}
+        menu={<a className="fullName">Logout</a>}
         menus={[
           { label: 'My Profile', href: '', icon: null },
           { label: 'SuperCoind Zone', href: '', icon: null },
@@ -50,7 +55,7 @@ const Header = (props) => {
           { label: 'Rewards', href: '', icon: null },
           { label: 'Notifications', href: '', icon: null },
           { label: 'Gift Cards', href: '', icon: null },
-          { label: 'Logout', href: '', icon: null },
+          { label: 'Logout', href: '', icon: null, onClick: logout },
         ]}
         firstMenu={
           <div className="firstmenu">

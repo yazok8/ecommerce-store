@@ -68,11 +68,12 @@ export const signout = () => {
     if (res.status === 200) {
       localStorage.clear()
       dispatch({ type: LOGOUT_REQUEST_SUCCESS })
-    } else {
-      dispatch({
-        type: LOGOUT_REQUEST_FAILURE,
-        payload: { error: res.data.error },
-      })
     }
+    //  else {
+    //   dispatch({
+    //     type: LOGOUT_REQUEST_FAILURE,
+    //     payload: { error: res.data.error },
+    //   })
+    // }
   }
 }

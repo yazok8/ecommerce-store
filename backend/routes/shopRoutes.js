@@ -1,6 +1,7 @@
 import express from 'express'
 import {
   createProduct,
+  getProductDetailsById,
   getProductsBySlug,
 } from '../controllers/productContoller.js'
 import {
@@ -67,5 +68,7 @@ router.post(
 )
 
 router.get('/:slug', getProductsBySlug)
+
+router.get('/:productId/p', getProductDetailsById)
 
 export default router

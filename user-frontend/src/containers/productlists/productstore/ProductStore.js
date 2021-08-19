@@ -3,6 +3,7 @@ import { getProductsBySlug } from '../../../actions/actions'
 import Layout from '../../../components/layout/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { generatePublicUrl } from '../../../urlConfig'
+import { Link } from 'react-router-dom'
 
 const ProductStore = (props) => {
   const product = useSelector((state) => state.product)
@@ -31,7 +32,11 @@ const ProductStore = (props) => {
             </div>
             <div style={{ display: 'flex' }}>
               {product.productsByPrice[key].map((product) => (
-                <div className="product-container">
+                <Link
+                  to={`/${product.slug}/${product._id}/p`}
+                  style={{ display: 'block' }}
+                  className="product-container"
+                >
                   <div className="productImgContainer">
                     <img
                       src={generatePublicUrl(product.productPictures[0].img)}
@@ -48,7 +53,7 @@ const ProductStore = (props) => {
                       <div className="product-price">{product.price}</div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
