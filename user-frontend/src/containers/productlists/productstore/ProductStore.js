@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getProductsBySlug } from '../../../actions/actions'
+import Card from '../../../components/UI/card/Card'
 import Layout from '../../../components/layout/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { generatePublicUrl } from '../../../urlConfig'
@@ -22,14 +23,10 @@ const ProductStore = (props) => {
     <div>
       {Object.keys(product.productsByPrice).map((key, index) => {
         return (
-          <div className="card">
-            <div className="card-header">
-              <div>
-                {/* using key here to point to the price range in useState under 30, 40, 50 */}
-                {props.match.params.slug} under {priceRange[key]}
-              </div>
-              <button>view all</button>
-            </div>
+          <Card
+            headerLeft={`${props.match.params.slug} under ${priceRange[key]}`}
+            headerRight={<button>view all</button>}
+          >
             <div style={{ display: 'flex' }}>
               {product.productsByPrice[key].map((product) => (
                 <Link
@@ -56,7 +53,7 @@ const ProductStore = (props) => {
                 </Link>
               ))}
             </div>
-          </div>
+          </Card>
         )
       })}
     </div>
