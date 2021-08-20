@@ -1,26 +1,32 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../components/layout/Layout'
 import Card from '../../components/UI/card/Card'
 import './CartPage.style.css'
 
 const CartPage = (props) => {
+  const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart)
+  const cartItems = cart.cartItems
+
   return (
     <Layout>
       <div className="cartContainer">
         <Card headerLeft={`My Cart`} headerRight={<div>Deliver to </div>}>
-          <div className="cartHeader">
-            <div>My Cart</div>
-            <div>Deliver To</div>
-          </div>
-          <div className="flexRow">
-            <div className="cartProductContainer">
-              <img src="" />
+          {Object.keys(cartItems).map((key, index) => (
+            <div key={index} className="flexRow">
+              <div className="cartProductContainer">
+                <img src="" />
+              </div>
+              <div className="cartItemDetails">
+                <div>
+                  {cartItems[key].name} - qty - {cartItems[key].qty}
+                </div>
+                <div>Delivery in 3 - 5 days</div>
+              </div>
             </div>
-            <div className="cartItemDetails">
-              <div>product name</div>
-              <div>Delivery in 3 - 5 days</div>
-            </div>
-          </div>
+          ))}
+          {/* {JSON.stringify(cartItems)} */}
         </Card>
         <Card style={{ width: '500px' }}>Price</Card>
       </div>

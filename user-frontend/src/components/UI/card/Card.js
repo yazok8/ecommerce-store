@@ -6,7 +6,13 @@ const Card = (props) => {
     <div className="card" {...props}>
       <div className="card-header">
         {props.headerLeft && (
-          <div>
+          <div
+            style={{
+              alignSelf: 'center',
+              fontSize: '20px',
+              fontWeight: '500',
+            }}
+          >
             {/* using key here to point to the price range in useState under 30, 40, 50 */}
             {props.headerLeft}
           </div>

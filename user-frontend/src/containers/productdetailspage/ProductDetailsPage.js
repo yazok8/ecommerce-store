@@ -8,6 +8,7 @@ import { generatePublicUrl } from '../../urlConfig'
 import { useDispatch, useSelector } from 'react-redux'
 import './styles.css'
 import { getProductDetailsById } from '../../actions/actions'
+import { addToCart } from '../../actions/actions'
 
 const ProductDetailsPage = (props) => {
   const dispatch = useDispatch()
@@ -60,6 +61,13 @@ const ProductDetailsPage = (props) => {
                   marginRight: '5px',
                 }}
                 icon={<IoMdCart />}
+                onClick={() => {
+                  const { _id, name, price } = product.productDetails
+                  const img = product.productDetails.productPictures[0].img
+                  dispatch(addToCart({ _id, name, price, img }))
+                  console.log(product.productDetails)
+                  props.history.push('/cart')
+                }}
               />
               <MaterialButton
                 title="BUY NOW"

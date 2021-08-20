@@ -5,6 +5,7 @@ import {
   GET_PRODUCT_DETAILS_BY_ID_REQUEST,
   GET_PRODUCT_DETAILS_BY_ID_SUCCESS,
 } from './products.types'
+
 export const getProductsBySlug = (slug) => {
   return async (dispatch) => {
     const res = await axios.get(`/shop/${slug}`)
